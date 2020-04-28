@@ -50,3 +50,13 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+## Project File
+*.uvguix.*
+#*.uvoptx
+#*.uvprojx
+MDK-ARM/*.scvd
+DebugConfig
+
+## Build object File
+STM_SDCard_Test\MDK-ARM\STM_SDCard_Test/
