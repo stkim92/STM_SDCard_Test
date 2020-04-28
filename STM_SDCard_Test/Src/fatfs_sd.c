@@ -6,7 +6,8 @@
 
 #include "diskio.h"
 #include "fatfs_sd.h"
-
+#include "stdio.h"
+#include "stm32l4xx_hal_spi.h"
 uint16_t Timer1, Timer2;					/* 1ms Timer Counter */
 
 static volatile DSTATUS Stat = STA_NOINIT;	/* Disk Status */
@@ -34,13 +35,32 @@ static void DESELECT(void)
 /* SPI transmit a byte */
 static void SPI_TxByte(uint8_t data)
 {
+	uint8_t dummy = 0xff;
 	while(!__HAL_SPI_GET_FLAG(HSPI_SDCARD, SPI_FLAG_TXE));
-	HAL_SPI_Transmit(HSPI_SDCARD, &data, 1, SPI_TIMEOUT);
+	//HAL_SPI_Transmit(HSPI_SDCARD, &data, 1, SPI_TIMEOUT);
+	HAL_SPI_TransmitReceive(HSPI_SDCARD, &data, &dummy, 1, SPI_TIMEOUT);
 }
 
 /* SPI transmit buffer */
 static void SPI_TxBuffer(uint8_t *buffer, uint16_t len)
 {
+	uint8_t dummy=0xFF;
+	#if 0
+	uint16_t cnt;
+	//while(!__HAL_SPI_GET_FLAG(HSPI_SDCARD, SPI_FLAG_TXE));
+	//HAL_SPI_Transmit(HSPI_SDCARD, buffer, len, SPI_TIMEOUT);
+	printf("SPI[%d]", len);
+	for(cnt=0; cnt<len; cnt++)
+	{
+		printf(" %x", buffer[cnt]);
+	}
+	printf("\r\n");
+	#endif
+	#if 0
+	while(!__HAL_SPI_GET_FLAG(HSPI_SDCARD, SPI_FLAG_TXE));
+	if(HAL_SPI_TransmitReceive(HSPI_SDCARD, buffer, &dummy, len, SPI_TIMEOUT) != HAL_OK)
+		printf("SPI Send ERROR\r\n");
+	#endif
 	while(!__HAL_SPI_GET_FLAG(HSPI_SDCARD, SPI_FLAG_TXE));
 	HAL_SPI_Transmit(HSPI_SDCARD, buffer, len, SPI_TIMEOUT);
 }
@@ -87,7 +107,7 @@ static uint8_t SD_ReadyWait(void)
 static void SD_PowerOn(void) 
 {
 	uint8_t args[6];
-	uint32_t cnt = 0x1FFF;
+	int32_t cnt = 0x1FFF;
 
 	/* transmit bytes to wake up */
 	DESELECT();
@@ -108,10 +128,23 @@ static void SD_PowerOn(void)
 	args[5] = 0x95;		/* CRC */
 
 	SPI_TxBuffer(args, sizeof(args));
-
+	
 	/* wait response */
+	#if 0 //teddy 200428
 	while ((SPI_RxByte() != 0x01) && cnt)
 	{
+		cnt--;
+	}
+	#endif
+	while (1)
+	{
+		if(SPI_RxByte() == 0x01)
+			break;
+		if(cnt < 0)
+		{
+			printf("SPI not Respoinse!!  %s : %d \r\n",__FILE__, __LINE__);
+			break;
+		}	
 		cnt--;
 	}
 
