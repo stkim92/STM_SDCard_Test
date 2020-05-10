@@ -38,8 +38,9 @@ __initial_sp
 ; <h> Heap Configuration
 ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
-
-Heap_Size      EQU     0x200
+; tom 2020.05.08 heap 사이즈 변경
+; Heap_Size      EQU     0x200
+Heap_Size      EQU     0x800
 
                 AREA    HEAP, NOINIT, READWRITE, ALIGN=3
 __heap_base

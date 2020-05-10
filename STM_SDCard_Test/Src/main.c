@@ -29,6 +29,8 @@
 #include "string.h"
 #include "stdlib.h"
 
+#include "sdcard.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,9 +62,26 @@ FATFS *pfs;
 FIL fil;
 FRESULT fres;
 DWORD fre_clust;
-uint32_t totalSpace, freeSpace;
-char buffer[100];
+// tom 2020.05.07
+FILINFO finfo;
 
+char readBuffer[1675];
+char writeBuffer[20];
+
+int size = 0;
+uint32_t bytesWritten, bytesRead;
+
+
+char *fileName = "first.txt";
+char *strData = "testest\r\n";
+
+char *firstCertName = "91375cab42-private.pem.key";
+char *firstCert;
+
+
+
+char *wifiInfotName = "wifi.txt";
+WiFi_AP wifiInfo;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -140,57 +159,75 @@ int main(void)
   MX_TIM1_Init();
   MX_USART2_UART_Init();
   MX_FATFS_Init();
+	
   /* USER CODE BEGIN 2 */
+
+	printf("------------------------------------------\r\n");
+  printf("		   SPI SD Card wifi info Test1 \r\n");
   printf("------------------------------------------\r\n");
-  printf("		   SPI SD Card Test \r\n");
+	
+	mountSD(&fs);
+
+	/* Read Certification from SD Card */
+	readCertFromSD(&finfo, &fil, wifiInfotName, readBuffer, &bytesRead);
+	storeWifiToStructure(&wifiInfo, readBuffer);
+	
+	printf("[WiFI Info Print]\r\n");
+	printf("SSID: %s\n", wifiInfo.WiFi_SSID);
+	printf("PW: %s\n", wifiInfo.WiFi_PW);
+	printf("NUM: %d\n", wifiInfo.num);
+	
+	printf("wifiInfo : %s\r\n", (char*)&wifiInfo + 4);
+	printf("wifiInfo : %s\r\n", (char*)&wifiInfo+7);
+	printf("wifiInfo : %s\r\n", (char*)&wifiInfo);
+	
+	printf("size : %d\r\n", size);
+	
+	char buffer5[size];
+	memset(buffer5, 0x00, size);
+	memcpy(buffer5, &wifiInfo, size);
+	 
+	printf("buffer5 : %s\r\n", buffer5);
+	
+	structToStr(&wifiInfo, writeBuffer);
+	printf("writeBuffer : %s\r\n", writeBuffer);
+	
+		
+	unmountSD();
+	
+	printf("------------------------------------------\r\n");
+  printf("		   SPI SD Card Test1 \r\n");
   printf("------------------------------------------\r\n");
+	
+	
+	  /* Mount SD Card */
+  mountSD(&fs);
 
-  /* Mount SD Card */
-  if(f_mount(&fs, "", 0) != FR_OK)
-	  printf("f_mount Error: %s : %d \r\n",__FILE__, __LINE__);
+	/* Read Certification from SD Card */
+	readCertFromSD(&finfo, &fil, firstCertName, readBuffer, &bytesRead);
+	
+	/* Store Certification to Cert Variable*/
+	storeCertToVariable(&firstCert, readBuffer);
+	
+	printf("[readBuffer]\r\n%s\r\n", readBuffer);
+	printf("[firstCert]\r\n%s\r\n", firstCert);
+	printf("[file size] : %d \n", size);
 
-  /* Open file to write */
-  if(f_open(&fil, "first.txt", FA_OPEN_ALWAYS | FA_READ | FA_WRITE) != FR_OK)
-	  printf("f_open Error: %s : %d \r\n",__FILE__, __LINE__);
 
-  /* Check freeSpace space */
-  if(f_getfree("", &fre_clust, &pfs) != FR_OK)
-	  printf("f_getfree Error: %s : %d \r\n",__FILE__, __LINE__);
-
-  totalSpace = (uint32_t)((pfs->n_fatent - 2) * pfs->csize * 0.5);
-  freeSpace = (uint32_t)(fre_clust * pfs->csize * 0.5);
-
-  /* free space is less than 1kb */
-  if(freeSpace < 1)
-	  printf("freespace Error: %s : %d \r\n",__FILE__, __LINE__);
-
-  /* Writing text */
-  f_puts("STM32 SD Card I/O Example via SPI\n", &fil);
-  f_puts("Save the world!!!", &fil);
-
-  /* Close file */
-  if(f_close(&fil) != FR_OK)
-	  printf("f_close Error: %s : %d \r\n",__FILE__, __LINE__);
-
-  /* Open file to read */
-  if(f_open(&fil, "first.txt", FA_READ) != FR_OK)
-	  printf("f_open Error: %s : %d \r\n",__FILE__, __LINE__);
-
-  while(f_gets(buffer, sizeof(buffer), &fil))
-  {
-	  /* SWV output */
-	  printf("%s", buffer);
-	  fflush(stdout);
-  }
-
-  /* Close file */
-  if(f_close(&fil) != FR_OK)
-	  printf("f_close Error: %s : %d \r\n",__FILE__, __LINE__);
-
+  /* Initialize Readbuffer and Size Variable */
+	initBuffer(readBuffer, &size);
+	
+	printf("************************After initBuffer*********************** \r\n");
+	
+  printf("[readBuffer]\r\n%s\r\n", readBuffer);
+	printf("[firstCert]\r\n%s\r\n", firstCert);
+	
+	/* Free Cert  */
+  free(firstCert);
+	
   /* Unmount SDCARD */
-  if(f_mount(NULL, "", 1) != FR_OK)
-	  printf("f_mount Error: %s : %d \r\n",__FILE__, __LINE__);
-
+  unmountSD();
+	
   /* USER CODE END 2 */
 
   /* Infinite loop */
