@@ -65,23 +65,25 @@ DWORD fre_clust;
 // tom 2020.05.07
 FILINFO finfo;
 
-char readBuffer[1675];
-char writeBuffer[20];
-
-int size = 0;
+//char readBuffer[1675];
+//int size = 0;
 uint32_t bytesWritten, bytesRead;
 
-
-char *fileName = "first.txt";
-char *strData = "testest\r\n";
+char *staticInfoFileName = "static3.txt";
+char *staticInfoStr;
+char writeBuffer[69];
 
 char *firstCertName = "91375cab42-private.pem.key";
 char *firstCert;
 
+char *secondCertName = "testtest.key";
+char *secondCert;
 
 
-char *wifiInfotName = "wifi.txt";
-WiFi_AP wifiInfo;
+STATIC_INFO staticInfo = {"SSID1", "PW1", 112, 1, 2, 3, 4};
+
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -161,73 +163,60 @@ int main(void)
   MX_FATFS_Init();
 	
   /* USER CODE BEGIN 2 */
-
-	printf("------------------------------------------\r\n");
-  printf("		   SPI SD Card wifi info Test1 \r\n");
-  printf("------------------------------------------\r\n");
 	
+	/* Mount SD Card */
 	mountSD(&fs);
 
-	/* Read Certification from SD Card */
-	readCertFromSD(&finfo, &fil, wifiInfotName, readBuffer, &bytesRead);
-	storeWifiToStructure(&wifiInfo, readBuffer);
-	
-	printf("[WiFI Info Print]\r\n");
-	printf("SSID: %s\n", wifiInfo.WiFi_SSID);
-	printf("PW: %s\n", wifiInfo.WiFi_PW);
-	printf("NUM: %d\n", wifiInfo.num);
-	
-	printf("wifiInfo : %s\r\n", (char*)&wifiInfo + 4);
-	printf("wifiInfo : %s\r\n", (char*)&wifiInfo+7);
-	printf("wifiInfo : %s\r\n", (char*)&wifiInfo);
-	
-	printf("size : %d\r\n", size);
-	
-	char buffer5[size];
-	memset(buffer5, 0x00, size);
-	memcpy(buffer5, &wifiInfo, size);
-	 
-	printf("buffer5 : %s\r\n", buffer5);
-	
-	structToStr(&wifiInfo, writeBuffer);
-	printf("writeBuffer : %s\r\n", writeBuffer);
-	
-		
-	unmountSD();
-	
 	printf("------------------------------------------\r\n");
-  printf("		   SPI SD Card Test1 \r\n");
+  printf("		   SPI SD Card INFO File Read/Write Test \r\n");
   printf("------------------------------------------\r\n");
 	
+	//char *buffer = (char*)&staticInfo;
 	
-	  /* Mount SD Card */
-  mountSD(&fs);
+	//memset(data, 0, sizeof(staticInfo)); 
+	//memcpy(data, buffer, sizeof(staticInfo)); 
+	
+	int result = existFile(staticInfoFileName, &finfo);
+	if(result != FR_OK){
+		printf("Do not Exist.\r\n");
+		
+		writeInfoToSD(&fil, staticInfoFileName, writeBuffer, &staticInfo);
+	}
+	else{
+		printf("Do Exist.\r\n");
+		readInfoFromSD(&fil, staticInfoFileName,  &staticInfoStr, &bytesRead);
+		storeWifiToStructure(&staticInfo, &staticInfoStr);
+	}
+	
+	printf("[Static Info Print]\r\n");
+	printf("SSID: %s\n", staticInfo.WiFi_SSID);
+	printf("PW: %s\n", staticInfo.WiFi_PW);
+	printf("wificonfig: %d\n", staticInfo.wificonfig);
+	printf("mqttconfig1: %d\n", staticInfo.mqttconfig1);
+	printf("mqttconfig2: %d\n", staticInfo.mqttconfig2);
+	printf("sslconfig1: %d\n", staticInfo.sslconfig1);
+	printf("sslconfig2: %d\n", staticInfo.sslconfig2);
+	
+	
+  printf("------------------------------------------\r\n");
+  printf("		   SPI SD Card CERT File Read Test \r\n");
+  printf("------------------------------------------\r\n");
 
 	/* Read Certification from SD Card */
-	readCertFromSD(&finfo, &fil, firstCertName, readBuffer, &bytesRead);
-	
-	/* Store Certification to Cert Variable*/
-	storeCertToVariable(&firstCert, readBuffer);
-	
-	printf("[readBuffer]\r\n%s\r\n", readBuffer);
+	readCertFromSD(&finfo, &fil, firstCertName, &firstCert, &bytesRead);
 	printf("[firstCert]\r\n%s\r\n", firstCert);
-	printf("[file size] : %d \n", size);
 
-
-  /* Initialize Readbuffer and Size Variable */
-	initBuffer(readBuffer, &size);
-	
-	printf("************************After initBuffer*********************** \r\n");
-	
-  printf("[readBuffer]\r\n%s\r\n", readBuffer);
-	printf("[firstCert]\r\n%s\r\n", firstCert);
+	readCertFromSD(&finfo, &fil, secondCertName, &secondCert, &bytesRead);
+	printf("[secondCertName]\r\n%s\r\n", secondCert);
 	
 	/* Free Cert  */
   free(firstCert);
+	free(secondCertName);
 	
+
   /* Unmount SDCARD */
   unmountSD();
-	
+
   /* USER CODE END 2 */
 
   /* Infinite loop */

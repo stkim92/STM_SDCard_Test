@@ -5,11 +5,11 @@
 <h2>Tool Versions:</h2>
 IDE-Version: •ÏVision V5.21.1.0
 Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: q q, q, LIC=3UUGK-ZT67K-337M1-CRIIP-R07Q5-MMNTI
+License Information: tom tom tom Flex license: MDK-ARM Standard Cortex-M only: 1 user(s) (mdk_cm_std) Support: Sep 2020
  
 Tool Versions:
-Toolchain:       MDK-ARM Professional  Version: 5.21a
-Toolchain Path:  E:\Keil_v5\ARM\ARMCC\Bin
+Toolchain:       MDK-ARM Standard Cortex-M only: 1 user(s)  Version: 5.21a
+Toolchain Path:  D:\Keil_v5\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 3 (build 300)
 Assembler:       Armasm.exe V5.06 update 3 (build 300)
 Linker/Locator:  ArmLink.exe V5.06 update 3 (build 300)
@@ -21,46 +21,99 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
 Dialog DLL:      TCM.DLL V1.14.14.0
  
 <h2>Project:</h2>
-C:\Users\saga2\Downloads\STM_SDCard_Test\STM_SDCard_Test\MDK-ARM\STM_SDCard_Test.uvprojx
-Project File Date:  05/09/2020
+D:\STM_SDCard_Test\STM_SDCard_Test\MDK-ARM\STM_SDCard_Test.uvprojx
+Project File Date:  05/13/2020
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 3 (build 300)', folder: 'E:\Keil_v5\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 3 (build 300)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'STM_SDCard_Test'
-compiling sdcard.c...
-../Inc/sdcard.h(55): warning:  #1-D: last line of file ends without a newline
+assembling startup_stm32l476xx.s...
+compiling fatfs_sd.c...
+..\Src\fatfs_sd.c(47): warning:  #177-D: variable "dummy" was declared but never referenced
+  	uint8_t dummy=0xFF;
+..\Src\fatfs_sd.c: 1 warning, 0 errors
+compiling user_diskio.c...
+../Src/user_diskio.c(86): warning:  #223-D: function "SD_disk_initialize" declared implicitly
+      return SD_disk_initialize(pdrv);
+../Src/user_diskio.c(105): warning:  #223-D: function "SD_disk_status" declared implicitly
+      return SD_disk_status(pdrv);
+../Src/user_diskio.c(130): warning:  #223-D: function "SD_disk_read" declared implicitly
+  	return SD_disk_read(pdrv, buff, sector, count);
+../Src/user_diskio.c(130): warning:  #188-D: enumerated type mixed with another type
+  	return SD_disk_read(pdrv, buff, sector, count);
+../Src/user_diskio.c(156): warning:  #223-D: function "SD_disk_write" declared implicitly
+    return SD_disk_write(pdrv, buff, sector, count);
+../Src/user_diskio.c(156): warning:  #188-D: enumerated type mixed with another type
+    return SD_disk_write(pdrv, buff, sector, count);
+../Src/user_diskio.c(180): warning:  #223-D: function "SD_disk_ioctl" declared implicitly
+      return SD_disk_ioctl(pdrv, cmd, buff);
+../Src/user_diskio.c(180): warning:  #188-D: enumerated type mixed with another type
+      return SD_disk_ioctl(pdrv, cmd, buff);
+../Src/user_diskio.c: 8 warnings, 0 errors
+compiling main.c...
+../Inc/sdcard.h(57): warning:  #1-D: last line of file ends without a newline
   #endif
-..\Src\sdcard.c(25): warning:  #181-D: argument is incompatible with corresponding format string conversion
-  	printf("readbuffer is : %s\n", readBuffer);
-..\Src\sdcard.c(100): warning:  #940-D: missing return statement at end of non-void function "readInfoFromSD"
+../Src/main.c: 1 warning, 0 errors
+compiling stm32l4xx_it.c...
+compiling stm32l4xx_hal_msp.c...
+compiling fatfs.c...
+compiling sdcard.c...
+../Inc/sdcard.h(57): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Src\sdcard.c(214): warning:  #940-D: missing return statement at end of non-void function "writeDataToFile"
   }
-..\Src\sdcard.c(44): warning:  #177-D: variable "isExist" was declared but never referenced
-  	uint8_t isExist = 0; // 0: doesn't exist, 1: exists
-..\Src\sdcard.c(223): warning:  #1-D: last line of file ends without a newline
+..\Src\sdcard.c(221): warning:  #1-D: last line of file ends without a newline
   }
-..\Src\sdcard.c: 5 warnings, 0 errors
+..\Src\sdcard.c: 3 warnings, 0 errors
+compiling stm32l4xx_hal.c...
+compiling stm32l4xx_hal_i2c.c...
+compiling stm32l4xx_hal_i2c_ex.c...
+compiling stm32l4xx_hal_rcc.c...
+compiling stm32l4xx_hal_rcc_ex.c...
+compiling stm32l4xx_hal_flash.c...
+compiling stm32l4xx_hal_flash_ramfunc.c...
+compiling stm32l4xx_hal_flash_ex.c...
+compiling stm32l4xx_hal_dma_ex.c...
+compiling stm32l4xx_hal_gpio.c...
+compiling stm32l4xx_hal_dma.c...
+compiling stm32l4xx_hal_pwr.c...
+compiling stm32l4xx_hal_cortex.c...
+compiling stm32l4xx_hal_pwr_ex.c...
+compiling stm32l4xx_hal_exti.c...
+compiling stm32l4xx_hal_spi_ex.c...
+compiling stm32l4xx_hal_spi.c...
+compiling stm32l4xx_hal_tim_ex.c...
+compiling stm32l4xx_hal_uart.c...
+compiling stm32l4xx_hal_tim.c...
+compiling diskio.c...
+compiling stm32l4xx_hal_uart_ex.c...
+compiling system_stm32l4xx.c...
+compiling ff_gen_drv.c...
+compiling syscall.c...
+compiling ff.c...
+compiling ccsbcs.c...
 linking...
-Program Size: Code=21440 RO-data=1852 RW-data=100 ZI-data=14260  
+Program Size: Code=22592 RO-data=1800 RW-data=180 ZI-data=16156  
 FromELF: creating hex file...
-"STM_SDCard_Test\STM_SDCard_Test.axf" - 0 Error(s), 5 Warning(s).
+"STM_SDCard_Test\STM_SDCard_Test.axf" - 0 Error(s), 13 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: ARM
-                http://www.keil.com/pack/ARM.CMSIS.5.6.0.pack
-                ARM::CMSIS:CORE:5.3.0
+                http://www.keil.com/pack/ARM.CMSIS.4.5.0.pack
+                ARM::CMSIS:CORE:4.3.0
                 CMSIS (Cortex Microcontroller Software Interface Standard)
-   * Component: CORE Version: 5.3.0
+   * Component: CORE Version: 4.3.0
 
 <h2>Collection of Component include folders:</h2>
-  C:\Users\saga2\Downloads\STM_SDCard_Test\STM_SDCard_Test\MDK-ARM\RTE
-  E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include
-  E:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include
+  D:\STM_SDCard_Test\STM_SDCard_Test\MDK-ARM\RTE
+  D:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include
+  D:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include
 
 <h2>Collection of Component Files used:</h2>
 
-   * Component: ARM::CMSIS:CORE:5.3.0
-Build Time Elapsed:  00:00:05
+   * Component: ARM::CMSIS:CORE:4.3.0
+Build Time Elapsed:  00:01:32
 </pre>
 </body>
 </html>

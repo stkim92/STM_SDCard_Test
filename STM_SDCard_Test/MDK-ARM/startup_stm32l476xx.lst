@@ -69,23 +69,23 @@ ARM Macro Assembler    Page 1
 ARM Macro Assembler    Page 2 
 
 
-   43 00000400 00000800 
+   43 00000400 00001600 
                        Heap_Size
-                               EQU              0x800
+                               EQU              0x1600
    44 00000400         
    45 00000400                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
 3
    46 00000000         __heap_base
    47 00000000         Heap_Mem
                                SPACE            Heap_Size
-   48 00000800         __heap_limit
-   49 00000800         
-   50 00000800                 PRESERVE8
-   51 00000800                 THUMB
-   52 00000800         
-   53 00000800         
-   54 00000800         ; Vector Table Mapped to Address 0 at Reset
-   55 00000800                 AREA             RESET, DATA, READONLY
+   48 00001600         __heap_limit
+   49 00001600         
+   50 00001600                 PRESERVE8
+   51 00001600                 THUMB
+   52 00001600         
+   53 00001600         
+   54 00001600         ; Vector Table Mapped to Address 0 at Reset
+   55 00001600                 AREA             RESET, DATA, READONLY
    56 00000000                 EXPORT           __Vectors
    57 00000000                 EXPORT           __Vectors_End
    58 00000000                 EXPORT           __Vectors_Size
@@ -682,12 +682,11 @@ ARM Macro Assembler    Page 11
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=stm_sdcard_test\startup_stm32l476xx.d -ostm_sdcard_test\startup
-_stm32l476xx.o -IC:\Users\saga2\Downloads\STM_SDCard_Test\STM_SDCard_Test\MDK-A
-RM\RTE -IE:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include -IE:\Keil_v5\AR
-M\PACK\Keil\STM32L4xx_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include --pre
-define="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 521" --predefine
-="_RTE_ SETA 1" --predefine="STM32L476xx SETA 1" --list=startup_stm32l476xx.lst
- startup_stm32l476xx.s
+_stm32l476xx.o -ID:\STM_SDCard_Test\STM_SDCard_Test\MDK-ARM\RTE -ID:\Keil_v5\AR
+M\PACK\ARM\CMSIS\4.5.0\CMSIS\Include -ID:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2
+.2.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include --predefine="__MICROLIB SETA 1" 
+--predefine="__UVISION_VERSION SETA 521" --predefine="_RTE_ SETA 1" --predefine
+="STM32L476xx SETA 1" --list=startup_stm32l476xx.lst startup_stm32l476xx.s
 
 
 
@@ -750,7 +749,7 @@ Symbol: __heap_base
    Uses
       At line 401 in file startup_stm32l476xx.s
 Comment: __heap_base used once
-__heap_limit 00000800
+__heap_limit 00001600
 
 Symbol: __heap_limit
    Definitions
@@ -1724,7 +1723,7 @@ Symbol: WWDG_IRQHandler
 ARM Macro Assembler    Page 1 Alphabetic symbol ordering
 Absolute symbols
 
-Heap_Size 00000800
+Heap_Size 00001600
 
 Symbol: Heap_Size
    Definitions

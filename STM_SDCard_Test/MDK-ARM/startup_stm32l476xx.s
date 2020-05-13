@@ -40,7 +40,7 @@ __initial_sp
 ; </h>
 ; tom 2020.05.08 heap 사이즈 변경
 ; Heap_Size      EQU     0x200
-Heap_Size      EQU     0x800
+Heap_Size      EQU     0x1600
 
                 AREA    HEAP, NOINIT, READWRITE, ALIGN=3
 __heap_base
