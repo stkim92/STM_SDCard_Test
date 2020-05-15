@@ -29,7 +29,7 @@
 #include "string.h"
 #include "stdlib.h"
 
-#include "sdcard.h"
+#include "skp_sdcard.h"
 
 /* USER CODE END Includes */
 
