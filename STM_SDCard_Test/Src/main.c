@@ -57,32 +57,6 @@ TIM_HandleTypeDef htim1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-FATFS fs;
-FATFS *pfs;
-FIL fil;
-FRESULT fres;
-DWORD fre_clust;
-// tom 2020.05.07
-FILINFO finfo;
-
-//char readBuffer[1675];
-//int size = 0;
-uint32_t bytesWritten, bytesRead;
-
-char *staticInfoFileName = "static3.txt";
-char *staticInfoStr;
-char writeBuffer[69];
-
-char *firstCertName = "91375cab42-private.pem.key";
-char *firstCert;
-
-char *secondCertName = "testtest.key";
-char *secondCert;
-
-
-STATIC_INFO staticInfo = {"SSID1", "PW1", 112, 1, 2, 3, 4};
-
-
 
 /* USER CODE END PV */
 
@@ -162,60 +136,9 @@ int main(void)
   MX_USART2_UART_Init();
   MX_FATFS_Init();
 	
+	
   /* USER CODE BEGIN 2 */
-	
-	/* Mount SD Card */
-	mountSD(&fs);
-
-	printf("------------------------------------------\r\n");
-  printf("		   SPI SD Card INFO File Read/Write Test \r\n");
-  printf("------------------------------------------\r\n");
-	
-	//char *buffer = (char*)&staticInfo;
-	
-	//memset(data, 0, sizeof(staticInfo)); 
-	//memcpy(data, buffer, sizeof(staticInfo)); 
-	
-	int result = existFile(staticInfoFileName, &finfo);
-	if(result != FR_OK){
-		printf("Do not Exist.\r\n");
-		
-		writeInfoToSD(&fil, staticInfoFileName, writeBuffer, &staticInfo);
-	}
-	else{
-		printf("Do Exist.\r\n");
-		readInfoFromSD(&fil, staticInfoFileName,  &staticInfoStr, &bytesRead);
-		storeWifiToStructure(&staticInfo, &staticInfoStr);
-	}
-	
-	printf("[Static Info Print]\r\n");
-	printf("SSID: %s\n", staticInfo.WiFi_SSID);
-	printf("PW: %s\n", staticInfo.WiFi_PW);
-	printf("wificonfig: %d\n", staticInfo.wificonfig);
-	printf("mqttconfig1: %d\n", staticInfo.mqttconfig1);
-	printf("mqttconfig2: %d\n", staticInfo.mqttconfig2);
-	printf("sslconfig1: %d\n", staticInfo.sslconfig1);
-	printf("sslconfig2: %d\n", staticInfo.sslconfig2);
-	
-	
-  printf("------------------------------------------\r\n");
-  printf("		   SPI SD Card CERT File Read Test \r\n");
-  printf("------------------------------------------\r\n");
-
-	/* Read Certification from SD Card */
-	readCertFromSD(&finfo, &fil, firstCertName, &firstCert, &bytesRead);
-	printf("[firstCert]\r\n%s\r\n", firstCert);
-
-	readCertFromSD(&finfo, &fil, secondCertName, &secondCert, &bytesRead);
-	printf("[secondCertName]\r\n%s\r\n", secondCert);
-	
-	/* Free Cert  */
-  free(firstCert);
-	free(secondCertName);
-	
-
-  /* Unmount SDCARD */
-  unmountSD();
+  testFunc();
 
   /* USER CODE END 2 */
 

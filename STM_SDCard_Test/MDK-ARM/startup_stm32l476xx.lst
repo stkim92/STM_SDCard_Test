@@ -47,33 +47,33 @@ ARM Macro Assembler    Page 1
    28 00000000         ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
    29 00000000         ; </h>
    30 00000000         
-   31 00000000 00000400 
+   31 00000000 00002400 
                        Stack_Size
-                               EQU              0x400
+                               EQU              0x2400
    32 00000000         
    33 00000000                 AREA             STACK, NOINIT, READWRITE, ALIGN
 =3
    34 00000000         Stack_Mem
                                SPACE            Stack_Size
-   35 00000400         __initial_sp
-   36 00000400         
-   37 00000400         
-   38 00000400         ; <h> Heap Configuration
-   39 00000400         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
-   40 00000400         ; </h>
-   41 00000400         ; tom 2020.05.08 heap 사이즈 변경
-   42 00000400         ; Heap_Size      EQU     0x200
+   35 00002400         __initial_sp
+   36 00002400         
+   37 00002400         
+   38 00002400         ; <h> Heap Configuration
+   39 00002400         ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
+   40 00002400         ; </h>
+   41 00002400         ; tom 2020.05.08 heap 사이즈 변경
+   42 00002400         ; Heap_Size      EQU     0x200
 
 
 
 ARM Macro Assembler    Page 2 
 
 
-   43 00000400 00001600 
+   43 00002400 00001600 
                        Heap_Size
                                EQU              0x1600
-   44 00000400         
-   45 00000400                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
+   44 00002400         
+   45 00002400                 AREA             HEAP, NOINIT, READWRITE, ALIGN=
 3
    46 00000000         __heap_base
    47 00000000         Heap_Mem
@@ -709,7 +709,7 @@ Symbol: Stack_Mem
    Uses
       None
 Comment: Stack_Mem unused
-__initial_sp 00000400
+__initial_sp 00002400
 
 Symbol: __initial_sp
    Definitions
@@ -1731,7 +1731,7 @@ Symbol: Heap_Size
    Uses
       At line 47 in file startup_stm32l476xx.s
 Comment: Heap_Size used once
-Stack_Size 00000400
+Stack_Size 00002400
 
 Symbol: Stack_Size
    Definitions

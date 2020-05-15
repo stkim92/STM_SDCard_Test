@@ -1,5 +1,5 @@
 Dependencies for Project 'STM_SDCard_Test', Target 'STM_SDCard_Test': (DO NOT MODIFY !)
-F (startup_stm32l476xx.s)(0x5EB92DC9)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1"-ID:\STM_SDCard_Test\STM_SDCard_Test\MDK-ARM\RTE-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include--pd "__UVISION_VERSION SETA 521" --pd "_RTE_ SETA 1" --pd "STM32L476xx SETA 1"--list startup_stm32l476xx.lst --xref -o stm_sdcard_test\startup_stm32l476xx.o --depend stm_sdcard_test\startup_stm32l476xx.d)
+F (startup_stm32l476xx.s)(0x5EBE1E8C)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1"-ID:\STM_SDCard_Test\STM_SDCard_Test\MDK-ARM\RTE-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include--pd "__UVISION_VERSION SETA 521" --pd "_RTE_ SETA 1" --pd "STM32L476xx SETA 1"--list startup_stm32l476xx.lst --xref -o stm_sdcard_test\startup_stm32l476xx.o --depend stm_sdcard_test\startup_stm32l476xx.d)
 F (..\Src\fatfs_sd.c)(0x5EA79608)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I ../Drivers/CMSIS/Include-ID:\STM_SDCard_Test\STM_SDCard_Test\MDK-ARM\RTE-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32L476xx -DUSE_HAL_DRIVER -DSTM32L476xx-o stm_sdcard_test\fatfs_sd.o --omf_browse stm_sdcard_test\fatfs_sd.crf --depend stm_sdcard_test\fatfs_sd.d)
 I (../Inc/main.h)(0x5EA79608)
 I (../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h)(0x5EBBDAF4)
@@ -41,7 +41,7 @@ I (../Middlewares/Third_Party/FatFs/src/diskio.h)(0x5EBBDAF5)
 I (../Middlewares/Third_Party/FatFs/src/integer.h)(0x5EBBDAF5)
 I (../Inc/fatfs_sd.h)(0x5EA79608)
 I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574E3016)
-F (../Src/main.c)(0x5EBBA0F9)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I ../Drivers/CMSIS/Include-ID:\STM_SDCard_Test\STM_SDCard_Test\MDK-ARM\RTE-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32L476xx -DUSE_HAL_DRIVER -DSTM32L476xx-o stm_sdcard_test\main.o --omf_browse stm_sdcard_test\main.crf --depend stm_sdcard_test\main.d)
+F (../Src/main.c)(0x5EBE1CD1)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I ../Drivers/CMSIS/Include-ID:\STM_SDCard_Test\STM_SDCard_Test\MDK-ARM\RTE-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32L476xx -DUSE_HAL_DRIVER -DSTM32L476xx-o stm_sdcard_test\main.o --omf_browse stm_sdcard_test\main.crf --depend stm_sdcard_test\main.d)
 I (../Inc/main.h)(0x5EA79608)
 I (../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h)(0x5EBBDAF4)
 I (../Inc/stm32l4xx_hal_conf.h)(0x5EA79608)
@@ -88,7 +88,7 @@ I (../Middlewares/Third_Party/FatFs/src/diskio.h)(0x5EBBDAF5)
 I (../Inc/user_diskio.h)(0x5EA79608)
 I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574E3016)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x574E3016)
-I (../Inc/sdcard.h)(0x5EBB9F96)
+I (../Inc/sdcard.h)(0x5EBE1CCA)
 I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x574E3016)
 F (../Src/user_diskio.c)(0x5EA79608)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I ../Drivers/CMSIS/Include-ID:\STM_SDCard_Test\STM_SDCard_Test\MDK-ARM\RTE-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32L476xx -DUSE_HAL_DRIVER -DSTM32L476xx-o stm_sdcard_test\user_diskio.o --omf_browse stm_sdcard_test\user_diskio.crf --depend stm_sdcard_test\user_diskio.d)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x574E3016)
@@ -254,8 +254,8 @@ I (../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim.h)(0x5EBBDAF4)
 I (../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_tim_ex.h)(0x5EBBDAF4)
 I (../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart.h)(0x5EBBDAF4)
 I (../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_uart_ex.h)(0x5EBBDAF4)
-F (..\Src\sdcard.c)(0x5EBBA141)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I ../Drivers/CMSIS/Include-ID:\STM_SDCard_Test\STM_SDCard_Test\MDK-ARM\RTE-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32L476xx -DUSE_HAL_DRIVER -DSTM32L476xx-o stm_sdcard_test\sdcard.o --omf_browse stm_sdcard_test\sdcard.crf --depend stm_sdcard_test\sdcard.d)
-I (../Inc/sdcard.h)(0x5EBB9F96)
+F (..\Src\sdcard.c)(0x5EBE1E3A)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc -I ../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FatFs/src -I ../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I ../Drivers/CMSIS/Include-ID:\STM_SDCard_Test\STM_SDCard_Test\MDK-ARM\RTE-ID:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-ID:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include-D__UVISION_VERSION="521" -D_RTE_ -DSTM32L476xx -DUSE_HAL_DRIVER -DSTM32L476xx-o stm_sdcard_test\sdcard.o --omf_browse stm_sdcard_test\sdcard.crf --depend stm_sdcard_test\sdcard.d)
+I (../Inc/sdcard.h)(0x5EBE1CCA)
 I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x574E3016)
 I (../Inc/main.h)(0x5EA79608)
 I (../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h)(0x5EBBDAF4)

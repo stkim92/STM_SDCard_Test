@@ -82,15 +82,45 @@
         <Book>
           <Number>0</Number>
           <Title>User Manual (STM32L476G-EVAL)</Title>
-          <Path>E:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.3.0\MDK\Boards\ST\STM32L476G-EVAL\Documentation\DM00155732.pdf</Path>
+          <Path>D:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.2.0\MDK\Boards\ST\STM32L476G-EVAL\Documentation\DM00155732.pdf</Path>
         </Book>
         <Book>
           <Number>1</Number>
           <Title>Schematics (STM32L476G-EVAL)</Title>
-          <Path>E:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.3.0\MDK\Boards\ST\STM32L476G-EVAL\Documentation\MB1144B.pdf</Path>
+          <Path>D:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.2.0\MDK\Boards\ST\STM32L476G-EVAL\Documentation\MB1144B.pdf</Path>
         </Book>
         <Book>
           <Number>2</Number>
+          <Title>User Manual (NUCLEO-L476RG)</Title>
+          <Path>D:\Keil_v5\ARM\PACK\Keil\STM32NUCLEO_BSP\1.7.0\Documents\DM00105823.pdf</Path>
+        </Book>
+        <Book>
+          <Number>3</Number>
+          <Title>Overview (NUCLEO-L476RG)</Title>
+          <Path>D:\Keil_v5\ARM\PACK\Keil\STM32NUCLEO_BSP\1.7.0\Documents\DM00105918.pdf</Path>
+        </Book>
+        <Book>
+          <Number>4</Number>
+          <Title>Getting started (NUCLEO-L476RG)</Title>
+          <Path>D:\Keil_v5\ARM\PACK\Keil\STM32NUCLEO_BSP\1.7.0\Documents\DM00105928.pdf</Path>
+        </Book>
+        <Book>
+          <Number>5</Number>
+          <Title>Schematics (NUCLEO-L476RG)</Title>
+          <Path>D:\Keil_v5\ARM\PACK\Keil\STM32NUCLEO_BSP\1.7.0\Documents\MB1136.pdf</Path>
+        </Book>
+        <Book>
+          <Number>6</Number>
+          <Title>Quick Start Guide (NUCLEO-L476RG)</Title>
+          <Path>D:\Keil_v5\ARM\PACK\Keil\STM32NUCLEO_BSP\1.7.0\Documents\STM32L476RG-NUCLEO_QSG.pdf</Path>
+        </Book>
+        <Book>
+          <Number>7</Number>
+          <Title>STM32 Nucleo board (NUCLEO-L476RG)</Title>
+          <Path>http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1847/PF261636</Path>
+        </Book>
+        <Book>
+          <Number>8</Number>
           <Title>Web Page (STM32L476G-EVAL)</Title>
           <Path>http://www.st.com/web/en/catalog/tools/PF261634</Path>
         </Book>
